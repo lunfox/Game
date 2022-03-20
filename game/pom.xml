@@ -41,7 +41,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>main.App</mainClass>
+                            <mainClass>main.Main</mainClass>
                         </configuration>
                     </execution>
                 </executions>
