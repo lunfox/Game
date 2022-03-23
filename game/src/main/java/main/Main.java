@@ -2,7 +2,9 @@ package main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Camera;
 import javafx.scene.Parent;
+import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -14,8 +16,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent main = FXMLLoader.load(getClass().getResource("/Main.fxml"));
-        Scene scene = new Scene(main, 1366, 768);
+        Scene scene = FXMLLoader.load(getClass().getResource("/Main.fxml"));
         stage.setTitle("Название игры");
         stage.setScene(scene);
         stage.setFullScreen(true);
