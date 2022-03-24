@@ -6,9 +6,9 @@
 <?import javafx.scene.text.Font?>
 
 <Scene fx:id="mainScene" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
-   <Pane fx:id="mainRoot" prefHeight="768.0" prefWidth="1366.0">
+   <Pane fx:id="mainRoot" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #161c22;">
       <children>
-         <Button layoutX="601.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#onPlay" text="Игра">
+         <Button id="Button" layoutX="597.0" layoutY="403.0" mnemonicParsing="false" onMouseClicked="#onPlay" prefHeight="59.0" prefWidth="170.0" stylesheets="@playButton.css" text="Play" textFill="WHITE">
             <font>
                <Font size="48.0" />
             </font>
