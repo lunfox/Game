@@ -1,7 +1,7 @@
 # Slither.io Javafx edition
 ### Текущее состояние:
 - Игровой менеджер :x:
-- Меню :x:
+- Меню :white_circle:
 - Камера :white_circle:
 - Змейка :x:
 - Коллизии :x:
