@@ -5,10 +5,10 @@
     -fx-background-color: 
         linear-gradient(from 0% 93% to 0% 100%, #006809 0%, #016401 100%),
         #0a5800,
-        #03c903,
+        #03a503,
         radial-gradient(center 50% 50%, radius 100%, #04d620, #0ada25);
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-    -fx-text-fill: #740170;
+    -fx-text-fill: #ffffff;
     -fx-font-size: 30px;
 }
 
@@ -16,7 +16,7 @@
     -fx-background-color: 
         linear-gradient(from 0% 93% to 0% 100%, #006809 0%, #016401 100%),
         #0a5800,
-        #03c903,
+        #03a503,
         radial-gradient(center 50% 50%, radius 100%, #84eb92, #0ada25);
 }
 
