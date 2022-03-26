@@ -8,7 +8,7 @@
         #03c903,
         radial-gradient(center 50% 50%, radius 100%, #04d620, #0ada25);
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #740170;
     -fx-font-size: 30px;
 }
 

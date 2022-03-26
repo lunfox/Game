@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
     
     public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Scene scene = FXMLLoader.load(getClass().getResource("/Main.fxml"));
-        stage.setTitle("Название игры");
+        stage.setTitle("Slither.io");
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
