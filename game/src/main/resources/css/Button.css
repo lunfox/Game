@@ -27,7 +27,7 @@
 
 #SkinButton {
     -fx-content-display: graphic-only;
-    -fx-background-image: url('buttonSkin.png');
+    -fx-background-image: url('../images/buttonSkin.png');
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-color: transparent;
@@ -35,7 +35,7 @@
 
 #SettingsButton {
     -fx-content-display: graphic-only;
-    -fx-background-image: url('buttonSettings.png');
+    -fx-background-image: url('../images/buttonSettings.png');
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-color: transparent;
