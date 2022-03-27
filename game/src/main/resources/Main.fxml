@@ -12,7 +12,7 @@
 <Scene fx:id="mainScene" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <Pane fx:id="mainRoot" prefHeight="769.0" prefWidth="1367.0" style="-fx-background-color: #161c22;">
       <children>
-         <Button id="Button" layoutX="597.0" layoutY="403.0" mnemonicParsing="false" onMouseClicked="#onPlay" prefHeight="59.0" prefWidth="170.0" stylesheets="@PlayButton.css" text="Play" textFill="WHITE">
+         <Button id="PlayButton" layoutX="597.0" layoutY="403.0" mnemonicParsing="false" onMouseClicked="#onPlay" prefHeight="59.0" prefWidth="170.0" stylesheets="@Button.css" text="Play" textFill="WHITE">
             <font>
                <Font size="48.0" />
             </font>
@@ -36,12 +36,8 @@
                </Text>
             </children>
          </TextFlow>
-         <Button id="Button" layoutX="79.0" layoutY="560.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" stylesheets="@SkinButton.css" text="Button" />
-         <Text fill="#04d620" layoutX="86.0" layoutY="694.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change skin">
-            <font>
-               <Font name="Calibri" size="24.0" />
-            </font>
-         </Text>
+         <Button id="SkinButton" layoutX="79.0" layoutY="560.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" stylesheets="@Button.css" text="Button" />
+         <Button id="SettingsButton" layoutX="1261.0" layoutY="46.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@Button.css" text="Button" />
       </children>
       <opaqueInsets>
          <Insets />
