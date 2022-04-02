@@ -1,5 +1,8 @@
 package model.elements;
 
+import javafx.scene.canvas.GraphicsContext;
+import model.map.GameMap;
+
 public abstract class Base {
     
     protected double x, y;
@@ -8,10 +11,26 @@ public abstract class Base {
     protected double paintWidth;
     protected double paintHeight;
 
-    public Base(double x, double y, double width, double height) {
+    public Base(double x, double y, double size) {
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.width = size;
+        this.height = size;
+    }
+
+    public abstract void action();
+
+    public abstract void render(GraphicsContext gContext);
+
+    private void prepare() {
+        this.paintX = GameMap.view.relativeX(this.x);
+        this.paintY = GameMap.view.relativeY(this.y);
+        this.paintWidth = GameMap.view.relativeW(this.width);
+        this.paintHeight = GameMap.view.relativeH(this.height);
+    }
+
+    public void update() {
+        this.prepare();
+        this.action();
     }
 }

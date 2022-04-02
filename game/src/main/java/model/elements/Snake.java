@@ -16,7 +16,7 @@ public class Snake extends Base {
     private double toAngle;
 
     private Image img;
-    private double length = 10;
+    private double length = 280;
     private double maxBodyLen = 100;
     private double turnSpeed = 0.06;
     private double vx = 0;
@@ -26,8 +26,8 @@ public class Snake extends Base {
 
     private ArrayList<Movement> body = new ArrayList<>();
 
-    public Snake(double x, double y) {
-        super(x, y, 0, 0);
+    public Snake(double x, double y, double size) {
+        super(x, y, size);
     }
 
     public void turnAround() {
@@ -59,6 +59,7 @@ public class Snake extends Base {
         }
     }
 
+    @Override
     public void action() {
         body.add(new Movement(x, y, speed, angle));
         if (body.size()> maxBodyLen) {
@@ -70,6 +71,7 @@ public class Snake extends Base {
         this.y += this.vy;
     }
 
+    @Override
     public void render(GraphicsContext gContext) {
         gContext.save();
         gContext.beginPath();
