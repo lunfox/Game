@@ -20,7 +20,7 @@ public class MainController {
 
     @FXML
     public void onPlay() throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Game.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Game.fxml"));
         Pane pane = fxmlLoader.load();
         GameController gameController = fxmlLoader.<GameController>getController();
         gameController.startGame(mainScene);

@@ -12,7 +12,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Scene scene = FXMLLoader.load(getClass().getResource("/Main.fxml"));
+        Scene scene = FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
         stage.setTitle("snake.io");
         stage.setScene(scene);
         stage.setFullScreen(true);
