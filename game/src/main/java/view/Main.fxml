@@ -10,37 +10,41 @@
 <?import javafx.scene.text.TextFlow?>
 
 <Scene fx:id="mainScene" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewmodel.MainController">
-   <Pane fx:id="mainRoot" prefHeight="769.0" prefWidth="1367.0" style="-fx-background-color: #161c22;">
+   <Pane fx:id="mainRoot">
       <children>
-         <Button id="PlayButton" layoutX="597.0" layoutY="403.0" mnemonicParsing="false" onMouseClicked="#onPlay" prefHeight="59.0" prefWidth="170.0" stylesheets="@css/Button.css" text="Play" textFill="WHITE">
-            <font>
-               <Font size="48.0" />
-            </font>
-         </Button>
-         <TextField id="Nickname" fx:id="nickname" layoutX="514.0" layoutY="319.0" prefHeight="25.0" prefWidth="339.0" stylesheets="@css/Nickname.css" text="Nickname">
-            <font>
-               <Font size="30.0" />
-            </font>
-         </TextField>
-         <TextFlow layoutX="512.0" layoutY="93.0" prefHeight="105.0" prefWidth="328.0">
+         <Pane prefHeight="769.0" prefWidth="1367.0" style="-fx-background-color: #161c22;">
             <children>
-               <Text fill="#04d620" strokeType="OUTSIDE" strokeWidth="0.0" text="snake" wrappingWidth="186.13671875">
+               <Button id="PlayButton" layoutX="597.0" layoutY="403.0" mnemonicParsing="false" onMouseClicked="#onPlay" prefHeight="59.0" prefWidth="170.0" stylesheets="@css/Button.css" text="Play" textFill="WHITE">
                   <font>
-                     <Font name="Calibri" size="96.0" />
+                     <Font size="48.0" />
                   </font>
-               </Text>
-               <Text fill="#bf2de8" strokeType="OUTSIDE" strokeWidth="0.0" text=".io">
+               </Button>
+               <TextField id="Nickname" fx:id="nickname" layoutX="514.0" layoutY="319.0" prefHeight="25.0" prefWidth="339.0" stylesheets="@css/Nickname.css" text="Nickname">
                   <font>
-                     <Font size="96.0" />
+                     <Font size="30.0" />
                   </font>
-               </Text>
+               </TextField>
+               <TextFlow layoutX="512.0" layoutY="93.0" prefHeight="105.0" prefWidth="328.0">
+                  <children>
+                     <Text fill="#04d620" strokeType="OUTSIDE" strokeWidth="0.0" text="snake" wrappingWidth="186.13671875">
+                        <font>
+                           <Font name="Calibri" size="96.0" />
+                        </font>
+                     </Text>
+                     <Text fill="#bf2de8" strokeType="OUTSIDE" strokeWidth="0.0" text=".io">
+                        <font>
+                           <Font size="96.0" />
+                        </font>
+                     </Text>
+                  </children>
+               </TextFlow>
+               <Button id="SkinButton" layoutX="20.0" layoutY="620.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" stylesheets="@css/Button.css" text="Button" />
+               <Button id="SettingsButton" layoutX="1261.0" layoutY="46.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
             </children>
-         </TextFlow>
-         <Button id="SkinButton" layoutX="20.0" layoutY="620.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" stylesheets="@css/Button.css" text="Button" />
-         <Button id="SettingsButton" layoutX="1261.0" layoutY="46.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </Pane>
       </children>
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
    </Pane>
 </Scene>

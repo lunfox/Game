@@ -9,8 +9,6 @@ public class MainController {
     
     public static int width = 1366;
     public static int height = 768;
-    public static int w = width / 2;
-    public static int h = height / 2;
 
     @FXML
     private Pane mainRoot;
@@ -24,6 +22,8 @@ public class MainController {
         Pane pane = fxmlLoader.load();
         GameController gameController = fxmlLoader.<GameController>getController();
         gameController.startGame(mainScene);
+        mainRoot.getChildren().removeAll();
         mainRoot.getChildren().setAll(pane);
     }
+
 }

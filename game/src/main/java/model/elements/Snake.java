@@ -8,29 +8,36 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import model.map.GameMap;
+import model.view.ViewTracker;
 
-public class Snake extends Base {
+public class Snake extends Base implements ViewTracker{
    
-    private double speed;
-    private double angle;
-    private double toAngle;
+    private double BASE_ANGLE = Math.PI * 200;
+    private double SPEED = 4;
+
+    private double speed = SPEED;
+    private double oldSpeed = SPEED;
+
+    private double angle = Math.PI * 2 * Math.random();
+    private double toAngle = angle;
 
     private Image img;
+
     private double length = 280;
-    private double maxBodyLen = 100;
+    private double maxBodyLen;
     private double turnSpeed = 0.06;
     private double vx = 0;
     private double vy = 0;
-
-    private double BASE_ANGLE = 10;
 
     private ArrayList<Movement> body = new ArrayList<>();
 
     public Snake(double x, double y, double size) {
         super(x, y, size);
+        updateSize(0);
+        velocity();
     }
 
-    public void turnAround() {
+    private void turnAround() {
         double angleDistance = toAngle - angle;
         if (Math.abs(angleDistance) <= turnSpeed) {
             toAngle = angle = BASE_ANGLE + toAngle % (Math.PI * 2);
@@ -39,7 +46,7 @@ public class Snake extends Base {
         }
     }
 
-    public void velocity() {
+    private void velocity() {
         double angle  = this.angle % (Math.PI * 2);
         double vx = Math.abs(speed * Math.sin(angle));
         double vy = Math.abs(speed * Math.cos(angle));
@@ -62,7 +69,7 @@ public class Snake extends Base {
     @Override
     public void action() {
         body.add(new Movement(x, y, speed, angle));
-        if (body.size()> maxBodyLen) {
+        if (body.size() > maxBodyLen) {
             body.remove(0);
         }
         this.turnAround();
@@ -72,7 +79,8 @@ public class Snake extends Base {
     }
 
     @Override
-    public void render(GraphicsContext gContext) {
+    public void render() {
+        GraphicsContext gContext = GameMap.gContext;
         gContext.save();
         gContext.beginPath();
         gContext.moveTo(paintX, paintY);
@@ -99,13 +107,14 @@ public class Snake extends Base {
         }
         gContext.setLineCap(StrokeLineCap.ROUND);
         gContext.setLineJoin(StrokeLineJoin.ROUND);
-        gContext.setStroke(Color.AQUA);
+        gContext.setStroke(Color.GREEN);
         gContext.setLineWidth(width);
         gContext.stroke();
         gContext.restore();
+
         gContext.save();
-        gContext.translate(this.paintX, this.paintY);
-        gContext.rotate(this.angle);
+        gContext.translate(paintX, paintY);
+        gContext.rotate(angle);
         gContext.drawImage(
         img,
         -paintWidth / 2,
@@ -114,7 +123,6 @@ public class Snake extends Base {
         paintHeight
         );
         gContext.restore();
-        
     }
 
     public void moveTo(double nx, double ny) {
@@ -134,14 +142,32 @@ public class Snake extends Base {
     
         int rounds = (int) Math.floor(this.toAngle / (Math.PI * 2));
     
-        this.toAngle = angle;
+        toAngle = angle;
     
-        if (oldAngle >= Math.PI * 3 / 2 && this.toAngle <= Math.PI / 2) {
+        if (oldAngle >= Math.PI * 3 / 2 && toAngle <= Math.PI / 2) {
             rounds++;
-        } else if (oldAngle <= Math.PI / 2 && this.toAngle >= Math.PI * 3 / 2) {
+        } else if (oldAngle <= Math.PI / 2 && toAngle >= Math.PI * 3 / 2) {
             rounds--;
         }
 
         this.toAngle += rounds * Math.PI * 2;
+    }
+
+    @Override
+    public double getX() {
+        return x;
+    }
+
+    @Override
+    public double getY() {
+        return y;
+    }
+
+    public void updateSize(double added) {
+        width += added;
+        height += added;
+        length += added * 50;
+        turnSpeed -= added / 1000;
+        maxBodyLen = Math.ceil(this.length / oldSpeed);
     }
 }

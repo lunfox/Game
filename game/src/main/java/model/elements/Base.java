@@ -1,6 +1,5 @@
 package model.elements;
 
-import javafx.scene.canvas.GraphicsContext;
 import model.map.GameMap;
 
 public abstract class Base {
@@ -20,17 +19,18 @@ public abstract class Base {
 
     public abstract void action();
 
-    public abstract void render(GraphicsContext gContext);
+    public abstract void render();
 
     private void prepare() {
-        this.paintX = GameMap.view.relativeX(this.x);
-        this.paintY = GameMap.view.relativeY(this.y);
-        this.paintWidth = GameMap.view.relativeW(this.width);
-        this.paintHeight = GameMap.view.relativeH(this.height);
+        this.paintX = GameMap.view.relativeX(x);
+        this.paintY = GameMap.view.relativeY(y);
+        this.paintWidth = GameMap.view.relativeW(width);
+        this.paintHeight = GameMap.view.relativeH(height);
     }
 
     public void update() {
-        this.prepare();
-        this.action();
+        prepare();
+        action();
+        render();
     }
 }

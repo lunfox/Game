@@ -6,15 +6,18 @@ public class View {
     
     private GameMap gameMap;
     private double width, height;
-    private double x, y;
+    private double x = 0;
+    private double y = 0;
 
-    public View(GameMap gameMap) {
+    public View(GameMap gameMap, double vWidth, double vHeight) {
         this.gameMap = gameMap;
+        this.width = vWidth;
+        this.height = vHeight;
     }
 
-    public void trace(double x, double y) {
-        this.x = (x / gameMap.getScale()) - width / 2;
-        this.y = (y / gameMap.getScale()) - height / 2;
+    public void trace(ViewTracker obj) {
+        x = (obj.getX() / gameMap.getScale()) - width / 2;
+        y = (obj.getY() / gameMap.getScale()) - height / 2;
     }
     
     public double absoluteX(double x) {
@@ -39,5 +42,21 @@ public class View {
 
     public double relativeH(double height) {
         return height / gameMap.getScale();
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
     }
 }
