@@ -1,6 +1,6 @@
-package model.view;
+package client.model.view;
 
-import model.map.GameMap;
+import client.model.map.GameMap;
 
 public class View {
     

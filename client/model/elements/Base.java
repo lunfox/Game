@@ -1,6 +1,6 @@
-package model.elements;
+package client.model.elements;
 
-import model.map.GameMap;
+import client.model.map.GameMap;
 
 public abstract class Base {
     

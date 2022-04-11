@@ -1,4 +1,4 @@
-package model.elements;
+package client.model.elements;
 
 public class Movement {
     

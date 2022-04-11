@@ -1,4 +1,4 @@
-package viewmodel;
+package client.controller;
 
 import javafx.scene.Scene;
 

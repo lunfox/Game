@@ -1,10 +1,10 @@
-package model.map;
+package client.model.map;
 
+import client.model.view.View;
+import client.model.view.ViewTracker;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import model.view.View;
-import model.view.ViewTracker;
 
 public class GameMap {
 
@@ -18,7 +18,7 @@ public class GameMap {
     private double paintHeight;
 
     private double toScale = 1;
-    private Image tileImage = new Image("/back.png", 100, 100, false, false);
+    private Image tileImage = new Image("client/view/images/back.png", 100, 100, false, false);
     
     public GameMap(Canvas canvas, double vWidth, double vHeight) {
         this.canvas = canvas;

@@ -1,14 +1,13 @@
-package viewmodel;
+package client.controller;
 
+import client.model.elements.Snake;
+import client.model.map.GameMap;
+import client.model.view.Observer;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
-import model.elements.Snake;
-import model.map.GameMap;
-import model.view.Observer;
 
 public class GameController {
 
@@ -46,7 +45,7 @@ public class GameController {
     private void binding() {
         double nx = (mouse.getX() + GameMap.view.getX()) * GameMap.scale;
         double ny = (mouse.getY() + GameMap.view.getY()) * GameMap.scale;
-        player.moveTo(nx, ny);
+        //player.moveTo(nx, ny);
         playerSnake.moveTo(nx, ny);
     }
 }

@@ -1,4 +1,4 @@
-package model.view;
+package client.model.view;
 
 public interface ViewTracker {
     

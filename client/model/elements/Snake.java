@@ -1,14 +1,14 @@
-package model.elements;
+package client.model.elements;
 
 import java.util.ArrayList;
 
+import client.model.map.GameMap;
+import client.model.view.ViewTracker;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
-import model.map.GameMap;
-import model.view.ViewTracker;
 
 public class Snake extends Base implements ViewTracker{
    
@@ -82,6 +82,7 @@ public class Snake extends Base implements ViewTracker{
     public void render() {
         GraphicsContext gContext = GameMap.gContext;
         gContext.save();
+        //gContext.setEffect(new DropShadow(width, Color.BLACK));
         gContext.beginPath();
         gContext.moveTo(paintX, paintY);
         double wholeLength = this.length;
@@ -107,7 +108,7 @@ public class Snake extends Base implements ViewTracker{
         }
         gContext.setLineCap(StrokeLineCap.ROUND);
         gContext.setLineJoin(StrokeLineJoin.ROUND);
-        gContext.setStroke(Color.GREEN);
+        gContext.setStroke(Color.BLACK);
         gContext.setLineWidth(width);
         gContext.stroke();
         gContext.restore();

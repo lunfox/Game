@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<Scene fx:id="mainScene" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewmodel.MainController">
+<Scene fx:id="mainScene" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.MainController">
    <Pane fx:id="mainRoot">
       <children>
          <Pane prefHeight="769.0" prefWidth="1367.0" style="-fx-background-color: #161c22;">
