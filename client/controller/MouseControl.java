@@ -1,5 +1,6 @@
 package client.controller;
 
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 
 public class MouseControl {
@@ -8,6 +9,7 @@ public class MouseControl {
     private boolean isBoost;
 
     public MouseControl(Scene scene) {
+        scene.setCursor(Cursor.NONE);
         scene.setOnMouseMoved(event -> {
             x = event.getScreenX();
             y = event.getScreenY();

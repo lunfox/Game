@@ -108,7 +108,7 @@ public class Snake extends Base implements ViewTracker{
         }
         gContext.setLineCap(StrokeLineCap.ROUND);
         gContext.setLineJoin(StrokeLineJoin.ROUND);
-        gContext.setStroke(Color.BLACK);
+        gContext.setStroke(Color.ORANGE);
         gContext.setLineWidth(width);
         gContext.stroke();
         gContext.restore();

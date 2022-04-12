@@ -1,5 +1,6 @@
 package client.controller;
 
+import client.model.elements.Food;
 import client.model.elements.Snake;
 import client.model.map.GameMap;
 //import client.model.view.Observer;
@@ -28,12 +29,13 @@ public class GameController {
         mouse = new MouseControl(scene);
         gameMap = new GameMap(canvas, 1366, 768);
         //player = new Observer(GameMap.width / 2, GameMap.height / 2);
-        playerSnake = new Snake(100, 100, 30);
-
+        playerSnake = new Snake(1000, 1000, 30);
+        Food food = new Food(1000, 1000, 40, 100);
         AnimationTimer gameLoop = new AnimationTimer() {
             @Override
             public void handle(long arg0) {
                 gameMap.update(playerSnake);
+                food.update();
                 playerSnake.update();
                 binding();
             }
