@@ -8,29 +8,24 @@ import javafx.scene.image.Image;
 
 public class GameMap {
 
-    private Canvas canvas;
     public static GraphicsContext gContext;
     public static View view;
     public static double scale = 1;
-    public static double width, height;
+    private double width = 10000;
+    public static double height = 10000;
 
     private double paintWidth;
     private double paintHeight;
 
     private double toScale = 1;
-    private Image tileImage = new Image("client/view/images/back.png", 100, 100, false, false);
+    private Image tileImage = new Image("client/view/images/back.jpg");
     
     public GameMap(Canvas canvas, double vWidth, double vHeight) {
-        this.canvas = canvas;
         gContext = canvas.getGraphicsContext2D();
         canvas.setWidth(vWidth);
         canvas.setHeight(vHeight);
         paintSizeReset();
-        view = new View(this, vWidth, vHeight);
-    }
-
-    public double getScale() {
-        return scale;
+        view = new View(vWidth, vHeight);
     }
 
     public double relative(double value) {
@@ -38,10 +33,10 @@ public class GameMap {
     }
 
     public void setScale(double scale) {
-        if (this.scale == scale) {
+        if (GameMap.scale == scale) {
           return;
         }
-        this.scale = scale < 1 ? 1 : scale;
+        GameMap.scale = scale < 1 ? 1 : scale;
         this.paintSizeReset();
     }
 
@@ -52,11 +47,11 @@ public class GameMap {
 
     public void update(ViewTracker obj) {
         if (toScale  > 0 && scale != toScale) {     
-            this.setScale(this.toScale);
+            setScale(toScale);
         }
         gContext.clearRect(0, 0, view.getWidth(), view.getHeight());
-        render();
         view.trace(obj);
+        render();
     }
 
     public void render() {
@@ -66,16 +61,13 @@ public class GameMap {
         double beginY = (view.getY() < 0) ? -view.getY() : (-view.getY() % tileHeight);
         double endX = (view.getX() + view.getWidth() > paintWidth) ? (paintWidth - view.getX()) : (beginX + view.getWidth() + tileWidth);
         double endY = (view.getY() + view.getHeight() > paintHeight) ? (paintHeight - view.getY()) : (beginY + view.getHeight() + tileHeight);
-        
         for (double x = beginX; x <= endX; x += tileWidth) {
             for (double y = beginY; y <= endY; y += tileHeight) {
                 double cx = endX - x;
                 double cy = endY - y;
                 double w = cx < tileWidth ? cx : tileWidth;
                 double h = cy < tileHeight ? cy : tileHeight;
-                //System.out.println(cx + " " + cy + " " + endX + " " + endY);
-                //gContext.drawImage(this.tileImage, 0, 0, w * this.scale, h * this.scale, x, y, w, h);
-                gContext.drawImage(this.tileImage, 0, 0, 200, 200, x, y, 100, 100);
+                gContext.drawImage(this.tileImage, 0, 0, w * GameMap.scale, h * GameMap.scale, x, y, w, h);
             }
         }
     }

@@ -4,8 +4,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="gameRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.GameController">
+<AnchorPane fx:id="gameRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #161c22;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.GameController">
    <children>
       <Group>
          <children>
