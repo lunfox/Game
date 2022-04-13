@@ -1,13 +1,17 @@
 package client.controller;
 
-import client.model.elements.Food;
-import client.model.elements.Snake;
+import client.controller.elements.SnakeController;
+import client.controller.map.GameMapController;
+import client.model.elements.SnakeModel;
 import client.model.map.GameMap;
-//import client.model.view.Observer;
+import client.model.map.GameMapModel;
+import client.view.elements.SnakeView;
+import client.view.map.GameMapView;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
 
 public class GameController {
@@ -20,23 +24,26 @@ public class GameController {
     
     private MouseControl mouse;
 
-    private GameMap gameMap;
+    //private GameMap gameMap;
+    private GraphicsContext gContext;
 
-    //private Observer player;
-    private Snake playerSnake;
+    private SnakeController snake;
+    private GameMapController map;
 
     public void startGame(Scene scene) {
+        gContext = canvas.getGraphicsContext2D();
+        snake = new SnakeController(new SnakeModel(100, 100, 30), new SnakeView());
+        map = new GameMapController(new GameMapModel(1366, 768), new GameMapView(canvas, 1366, 768));
         mouse = new MouseControl(scene);
-        gameMap = new GameMap(canvas, 1366, 768);
-        //player = new Observer(GameMap.width / 2, GameMap.height / 2);
-        playerSnake = new Snake(1000, 1000, 30);
-        Food food = new Food(1000, 1000, 40, 100);
+        //gameMap = new GameMap(canvas, 1366, 768);
         AnimationTimer gameLoop = new AnimationTimer() {
             @Override
             public void handle(long arg0) {
-                gameMap.update(playerSnake);
-                food.update();
-                playerSnake.update();
+                //gameMap.update(snake);
+                map.update(snake);
+                map.render();
+                snake.update();
+                snake.render();
                 binding();
             }
         };
@@ -44,8 +51,8 @@ public class GameController {
     }
 
     private void binding() {
-        double nx = (mouse.getX() + GameMap.view.getX()) * GameMap.scale;
-        double ny = (mouse.getY() + GameMap.view.getY()) * GameMap.scale;
-        playerSnake.moveTo(nx, ny);
+        double nx = (mouse.getX() + GameMapModel.view.getX()) * GameMapModel.scale;
+        double ny = (mouse.getY() + GameMapModel.view.getY()) * GameMapModel.scale;
+        snake.moveTo(nx, ny);
     }
 }

@@ -2,6 +2,7 @@ package client.model.elements;
 
 import client.model.map.GameMap;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.Bloom;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 

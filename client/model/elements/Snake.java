@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import client.model.map.GameMap;
 import client.model.view.ViewTracker;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeLineCap;
@@ -83,12 +84,14 @@ public class Snake extends Base implements ViewTracker{
         GraphicsContext gContext = GameMap.gContext;
         gContext.save();
         //gContext.setEffect(new DropShadow(width, Color.BLACK));
-        gContext.beginPath();
-        gContext.moveTo(paintX, paintY);
+        //gContext.beginPath();
+        //gContext.moveTo(paintX, paintY);
+        //gContext.setFill(Color.ORANGE);
         double wholeLength = this.length;
         if (body.size() > 0) {
-            int i = body.size() - 1;
-            while (i > 0) {
+            //int i = body.size() - 1;
+            int i = 0;
+            while (i != (body.size() - 1)) {
                 Movement movement = body.get(i);
                 double x = movement.x;
                 double y = movement.y;
@@ -101,14 +104,19 @@ public class Snake extends Base implements ViewTracker{
                 } else if (wholeLength < 0) {
                 break;
             }
-            i--;
+            i++;
             wholeLength -= movement.speed;
-            gContext.lineTo(GameMap.view.relativeX(x), GameMap.view.relativeY(y));
+            //gContext.lineTo(GameMap.view.relativeX(x), GameMap.view.relativeY(y));
+            if (i % 6 > 3) gContext.setFill(Color.WHITE);
+            else gContext.setFill(Color.BLACK);
+            gContext.fillOval(GameMap.view.relativeX(x), GameMap.view.relativeY(y), width, height);
             }
         }
+        gContext.restore();
+        /*
         gContext.setLineCap(StrokeLineCap.ROUND);
         gContext.setLineJoin(StrokeLineJoin.ROUND);
-        gContext.setStroke(Color.ORANGE);
+        gContext.setStroke(Color.RED);
         gContext.setLineWidth(width);
         gContext.stroke();
         gContext.restore();
@@ -124,6 +132,7 @@ public class Snake extends Base implements ViewTracker{
         paintHeight
         );
         gContext.restore();
+        */
     }
 
     public void moveTo(double nx, double ny) {
