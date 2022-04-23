@@ -2,6 +2,8 @@ package client.controller;
 
 import java.io.IOException;
 
+import client.App;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -35,5 +37,13 @@ public class MainController {
         skinController.init();
         mainRoot.getChildren().setAll(pane); 
     }
+    @FXML
+    public void onExit() throws IOException{
+        Platform.exit();
+        System.exit(0);
+    }
+    @FXML
+    public void onBack() throws IOException{
 
+}
 }

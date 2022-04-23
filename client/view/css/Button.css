@@ -51,3 +51,10 @@
     -fx-stroke: null;
     -fx-fill : null;
 }
+#ExitButton {
+    -fx-content-display: graphic-only;
+    -fx-background-image: url('../images/close.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent; 
+}
