@@ -40,3 +40,14 @@
     -fx-background-position: center;
     -fx-background-color: transparent;
 }
+#Color {
+    -fx-color-label-visible: false;
+    -fx-background-radius: 35;
+    -fx-background-color: #4c447c; 
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 10, 10);
+}
+
+#Color > .color-picker-label > .picker-color > .picker-color-rect {
+    -fx-stroke: null;
+    -fx-fill : null;
+}

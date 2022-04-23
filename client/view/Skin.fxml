@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #161c22;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.SkinController">
+   <children>
+      <ColorPicker id="Color" fx:id="colorPicker" layoutX="576.0" layoutY="269.0" prefHeight="250.0" prefWidth="250.0" styleClass="button" stylesheets="@css/Button.css">
+         <value>
+            <Color red="0.8399999737739563" green="0.8046716451644897" blue="0.7896000146865845" />
+         </value>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ColorPicker>
+   </children>
+</AnchorPane>

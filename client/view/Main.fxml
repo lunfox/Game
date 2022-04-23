@@ -38,7 +38,7 @@
                      </Text>
                   </children>
                </TextFlow>
-               <Button id="SkinButton" layoutX="20.0" layoutY="620.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" stylesheets="@css/Button.css" text="Button" />
+               <Button id="SkinButton" layoutX="20.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#onSkin" prefHeight="128.0" prefWidth="128.0" stylesheets="@css/Button.css" text="Button" />
                <Button id="SettingsButton" layoutX="1261.0" layoutY="46.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
             </children>
             <opaqueInsets>
