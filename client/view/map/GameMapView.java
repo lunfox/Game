@@ -2,22 +2,26 @@ package client.view.map;
 
 import client.model.map.GameMapModel;
 import client.model.view.View;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class GameMapView {
     
-    public static GraphicsContext gContext;
+    private GameMapModel map;
+    private GraphicsContext gContext;
     private Image tileImage = new Image("client/view/images/back.jpg");
 
-    public GameMapView(Canvas canvas, double vWidth, double vHeight) {
-        gContext = canvas.getGraphicsContext2D();
-        canvas.setWidth(vWidth);
-        canvas.setHeight(vHeight);
+    public GameMapView(GraphicsContext gContext, GameMapModel model) {
+        this.map = model;
+        this.gContext = gContext;
     }
 
-    public void render(double paintWidth, double paintHeight, double tileWidth, double tileHeight) {
+    public void render() {
+        clear();
+        double tileHeight = tileImage.getHeight();
+        double tileWidth = tileImage.getWidth();
+        double paintHeight = map.getPaintHeight();
+        double paintWidth = map.getPaintWidth();
         View view = GameMapModel.view;
         double beginX = (view.getX() < 0) ? -view.getX() : (-view.getX() % tileWidth);
         double beginY = (view.getY() < 0) ? -view.getY() : (-view.getY() % tileHeight);
@@ -34,15 +38,7 @@ public class GameMapView {
         }
     }
 
-    public double getTileWidth() {
-        return tileImage.getWidth();
-    }
-
-    public double getTileHeight() {
-        return tileImage.getHeight();
-    }
-
-    public void clear(double width, double height) {
-        gContext.clearRect(0, 0, width, height);
+    public void clear() {
+        gContext.clearRect(0, 0, GameMapModel.view.getWidth(), GameMapModel.view.getHeight());
     }
 }

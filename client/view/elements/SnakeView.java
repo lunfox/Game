@@ -1,22 +1,39 @@
 package client.view.elements;
 
 import java.util.ArrayList;
-
 import client.model.elements.Movement;
+import client.model.elements.SnakeModel;
 import client.model.map.GameMapModel;
-import client.view.map.GameMapView;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.StrokeLineJoin;
 
 public class SnakeView {
 
-    public void render(ArrayList<Movement> body, double length, double size) {
-        GraphicsContext gContext = GameMapView.gContext;
+    private SnakeModel snake;
+    private Color color;
+    private GraphicsContext gContext;
+
+    public SnakeView(SnakeModel model, Color color, GraphicsContext gContext) {
+        this.snake = model;
+        this.color = color;
+        this.gContext = gContext;
+    }
+
+    public void render() {
+        ArrayList<Movement> body = snake.getBody();
+        double length = snake.getLength();
+        double size = snake.getSize();
+        double paintX = snake.getPaintX();
+        double paintY = snake.getPaintY();
         gContext.save();
+        gContext.beginPath();
+        gContext.moveTo(paintX, paintY);
         double wholeLength = length;
         if (body.size() > 0) {
-            int i = 0;
-            while (i != (body.size() - 1)) {
+            int i = body.size() - 1;
+            while (i > 0) {
                 Movement movement = body.get(i);
                 double x = movement.x;
                 double y = movement.y;
@@ -29,13 +46,20 @@ public class SnakeView {
                 } else if (wholeLength < 0) {
                 break;
             }
-            i++;
+            i--;
             wholeLength -= movement.speed;
-            if (i % 6 > 3) gContext.setFill(Color.WHITE);
-            else gContext.setFill(Color.BLACK);
-            gContext.fillOval(GameMapModel.view.relativeX(x), GameMapModel.view.relativeY(y), size, size);
+            gContext.lineTo(GameMapModel.view.relativeX(x), GameMapModel.view.relativeY(y));
             }
         }
+        gContext.setLineCap(StrokeLineCap.ROUND);
+        gContext.setLineJoin(StrokeLineJoin.ROUND);
+        gContext.setStroke(color);
+        gContext.setLineWidth(size);
+        gContext.stroke();
         gContext.restore();
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }

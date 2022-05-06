@@ -2,7 +2,6 @@ package client.controller;
 
 import java.io.IOException;
 
-import client.App;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,26 +23,24 @@ public class MainController {
     public void onPlay() throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Game.fxml"));
         Pane pane = fxmlLoader.load();
-        GameController gameController = fxmlLoader.<GameController>getController();
-        gameController.startGame(mainScene);
-        mainRoot.getChildren().removeAll();
         mainRoot.getChildren().setAll(pane);
     }
+    
     @FXML 
     public void onSkin() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Skin.fxml"));
         Pane pane = fxmlLoader.load();
-        SkinController skinController = fxmlLoader.<SkinController>getController();
-        skinController.init();
         mainRoot.getChildren().setAll(pane); 
     }
+
     @FXML
     public void onExit() throws IOException{
         Platform.exit();
         System.exit(0);
     }
+
     @FXML
     public void onBack() throws IOException{
 
-}
+    }
 }

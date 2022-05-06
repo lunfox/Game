@@ -1,18 +1,17 @@
 package client.controller;
 
-import client.controller.elements.SnakeController;
-import client.controller.map.GameMapController;
 import client.model.elements.SnakeModel;
-import client.model.map.GameMap;
+import client.model.gameloop.GameLoop;
 import client.model.map.GameMapModel;
 import client.view.elements.SnakeView;
 import client.view.map.GameMapView;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 
 public class GameController {
 
@@ -22,37 +21,44 @@ public class GameController {
     @FXML
     private Canvas canvas;
     
-    private MouseControl mouse;
-
-    //private GameMap gameMap;
     private GraphicsContext gContext;
 
-    private SnakeController snake;
-    private GameMapController map;
+    private MouseController mouse;
 
-    public void startGame(Scene scene) {
+    private GameLoop gameLoop;
+
+    private AnimationTimer javafxLoop;
+
+
+    @FXML
+    public void initialize() {
         gContext = canvas.getGraphicsContext2D();
-        snake = new SnakeController(new SnakeModel(100, 100, 30), new SnakeView());
-        map = new GameMapController(new GameMapModel(1366, 768), new GameMapView(canvas, 1366, 768));
-        mouse = new MouseControl(scene);
-        //gameMap = new GameMap(canvas, 1366, 768);
-        AnimationTimer gameLoop = new AnimationTimer() {
+        canvas.setWidth(MainController.width);
+        canvas.setHeight(MainController.height);
+
+        GameMapModel mapModel = new GameMapModel(1366, 768);
+        GameMapView mapView = new GameMapView(gContext, mapModel);
+        SnakeModel snakeModel = new SnakeModel(1000, 1000, 30);
+        SnakeView snakeView = new SnakeView(snakeModel, Color.ALICEBLUE, gContext);
+
+        gameLoop = new GameLoop(snakeModel, snakeView, mapModel, mapView);
+        
+        mouse = new MouseController(canvas);
+        javafxLoop = new AnimationTimer() {
             @Override
             public void handle(long arg0) {
-                //gameMap.update(snake);
-                map.update(snake);
-                map.render();
-                snake.update();
-                snake.render();
-                binding();
+                gameLoop.setControlInfo(mouse.getX(), mouse.getY(), mouse.getIsBoost());
+                if (!GameLoop.running) endGame();
             }
         };
+        javafxLoop.start();
+
         gameLoop.start();
     }
 
-    private void binding() {
-        double nx = (mouse.getX() + GameMapModel.view.getX()) * GameMapModel.scale;
-        double ny = (mouse.getY() + GameMapModel.view.getY()) * GameMapModel.scale;
-        snake.moveTo(nx, ny);
+    private void endGame() {
+        javafxLoop.stop();
+        System.out.println("Конец игры");
+        Platform.exit();
     }
 }

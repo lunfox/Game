@@ -7,8 +7,8 @@ public class GameMapModel {
     
     public static double scale;
     public static View view;
-    private double width = 10000;
-    private double height = 10000;
+    private static double width = 10000;
+    private static double height = 10000;
     private double paintWidth;
     private double paintHeight;
     private double toScale = 1;
@@ -48,6 +48,12 @@ public class GameMapModel {
 
     public double getPaintHeight() {
         return paintHeight;
+    }
+
+    public static boolean limit(double x, double y) {
+        if (x < 0 || x > width || y < 0 || y > height) {
+            return true;
+        } else return false;
     }
 
 }

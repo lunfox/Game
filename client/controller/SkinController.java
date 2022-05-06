@@ -1,16 +1,8 @@
 package client.controller;
 
-import java.io.IOException;
-import java.net.URL;
-
-import client.App;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class SkinController {
@@ -18,7 +10,8 @@ public class SkinController {
     @FXML
     ColorPicker colorPicker;
 
-    public void init() {
+    @FXML
+    public void initialize() {
         colorPicker.setOnAction(event -> {
             colorPicker.setStyle("-fx-background-color:" + toHexString(colorPicker.getValue()));
         });
@@ -32,6 +25,7 @@ public class SkinController {
         String in = Integer.toHexString((int) Math.round(val * 255));
         return in.length() == 1 ? "0" + in : in;
     }
+
     @FXML
     void onBack(MouseEvent event)
     {
