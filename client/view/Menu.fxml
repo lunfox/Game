@@ -7,7 +7,6 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-
 <AnchorPane fx:id="mainRoot" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #161c22;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.MenuController">
    <children>
       <Button id="PlayButton" layoutX="597.0" layoutY="403.0" mnemonicParsing="false" onMouseClicked="#onPlay" prefHeight="59.0" prefWidth="170.0" stylesheets="@css/Button.css" text="Play" textFill="WHITE">
@@ -37,5 +36,6 @@
       <Button id="SkinButton" layoutX="20.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#onSkin" prefHeight="128.0" prefWidth="128.0" stylesheets="@css/Button.css" text="Button" />
       <Button id="SettingsButton" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
       <Button id="ExitButton" layoutX="1265.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onExit" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
+      <Button id="ScoreButton" fx:id="ScoreButton" layoutX="1276.0" layoutY="684.0" mnemonicParsing="false" onAction="#onScore" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
    </children>
 </AnchorPane>

@@ -65,5 +65,11 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-color: transparent; 
-
+}
+#ScoreButton{
+    -fx-content-display: graphic-only;
+    -fx-background-image: url('../images/score.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent 
 }

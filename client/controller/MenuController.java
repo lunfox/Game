@@ -1,6 +1,7 @@
 package client.controller;
 
 import java.io.IOException;
+import java.io.ObjectInputFilter.Status;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -14,7 +15,7 @@ public class MenuController {
     public static int width = 1366;
     public static int height = 768;
     @FXML
-    private AnchorPane mainRoot;
+    private  AnchorPane mainRoot;
 
    
 
@@ -39,7 +40,10 @@ public class MenuController {
     }
 
     @FXML
-    public void onBack() throws IOException{
-
+    public void onScore() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Score.fxml"));
+        AnchorPane pane = fxmlLoader.load();
+        mainRoot.getChildren().setAll(pane);
     }
 }
+
