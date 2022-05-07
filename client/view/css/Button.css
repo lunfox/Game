@@ -57,4 +57,13 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-color: transparent; 
+
+}
+#BackButton {
+    -fx-content-display: graphic-only;
+    -fx-background-image: url('../images/back.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent; 
+
 }

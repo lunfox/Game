@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #161c22;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.SkinController">
+<AnchorPane fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #161c22;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.SkinController">
    <children>
       <ColorPicker id="Color" fx:id="colorPicker" layoutX="576.0" layoutY="269.0" prefHeight="250.0" prefWidth="250.0" styleClass="button" stylesheets="@css/Button.css">
          <value>
@@ -16,6 +16,6 @@
             <Insets />
          </opaqueInsets>
       </ColorPicker>
-      <Button id="SkinExit" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#onBack" text="Button" />
+      <Button id="BackButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onBack" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
    </children>
 </AnchorPane>

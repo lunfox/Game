@@ -33,8 +33,8 @@ public class GameController {
     @FXML
     public void initialize() {
         gContext = canvas.getGraphicsContext2D();
-        canvas.setWidth(MainController.width);
-        canvas.setHeight(MainController.height);
+        canvas.setWidth(MenuController.width);
+        canvas.setHeight(MenuController.height);
 
         GameMapModel mapModel = new GameMapModel(1366, 768);
         GameMapView mapView = new GameMapView(gContext, mapModel);
