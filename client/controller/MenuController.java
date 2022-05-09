@@ -1,23 +1,27 @@
 package client.controller;
 
 import java.io.IOException;
-import java.io.ObjectInputFilter.Status;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 public class MenuController {
     
     public static int width = 1366;
     public static int height = 768;
+
+    @FXML
+    private Text textScore;
+
     @FXML
     private  AnchorPane mainRoot;
 
-   
+    public void setScore(int score) {
+        textScore.setText(textScore.getText() + Integer.toString(score));
+        textScore.setVisible(true);
+    }
 
     @FXML
     public void onPlay() throws Exception {

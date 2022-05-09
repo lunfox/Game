@@ -19,7 +19,7 @@ public class SnakeModel extends BaseModel implements ViewTracker {
     private double vx = 0;
     private double vy = 0;
     private boolean isSpeedUp = false;
-    private double point = 0;
+    private int point = 0;
     private boolean isAlive = true;
     private ArrayList<Movement> body = new ArrayList<>();
 
@@ -159,5 +159,9 @@ public class SnakeModel extends BaseModel implements ViewTracker {
 
     public boolean getIsAlive() {
         return isAlive;
+    }
+
+    public int getPoint() {
+        return point;
     }
 }

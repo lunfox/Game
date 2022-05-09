@@ -37,5 +37,10 @@
       <Button id="SettingsButton" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
       <Button id="ExitButton" layoutX="1265.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onExit" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
       <Button id="ScoreButton" fx:id="ScoreButton" layoutX="1276.0" layoutY="684.0" mnemonicParsing="false" onAction="#onScore" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
+      <Text fx:id="textScore" fill="WHITE" layoutX="568.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your final lenght was  " visible="false">
+         <font>
+            <Font name="Calibri" size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

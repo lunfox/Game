@@ -1,7 +1,6 @@
 package client.controller;
 
 import javafx.scene.Cursor;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 
 public class MouseController {

@@ -1,16 +1,15 @@
 package client.controller;
 
 import java.io.IOException;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class SkinController {
+
+    public static Color color = Color.color(Math.random(), Math.random(), Math.random());
 
     @FXML
     ColorPicker colorPicker;
@@ -20,8 +19,11 @@ public class SkinController {
 
     @FXML
     public void initialize() {
+        colorPicker.setValue(color);
+        colorPicker.setStyle("-fx-background-color:" + toHexString(color));
         colorPicker.setOnAction(event -> {
-            colorPicker.setStyle("-fx-background-color:" + toHexString(colorPicker.getValue()));
+            color = colorPicker.getValue();
+            colorPicker.setStyle("-fx-background-color:" + toHexString(color));
         });
     }
 
@@ -35,10 +37,9 @@ public class SkinController {
     }
 
     @FXML
-    private void onBack() throws IOException
-    {
-    AnchorPane pane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-    mainRoot.getChildren().setAll(pane);
+    private void onBack() throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
+        mainRoot.getChildren().setAll(pane);
     }
 
 }

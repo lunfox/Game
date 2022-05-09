@@ -1,17 +1,18 @@
 package client.controller;
 
+import java.io.IOException;
+
 import client.model.elements.SnakeModel;
 import client.model.gameloop.GameLoop;
 import client.model.map.GameMapModel;
 import client.view.elements.SnakeView;
 import client.view.map.GameMapView;
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 
 public class GameController {
 
@@ -29,7 +30,6 @@ public class GameController {
 
     private AnimationTimer javafxLoop;
 
-
     @FXML
     public void initialize() {
         gContext = canvas.getGraphicsContext2D();
@@ -39,7 +39,7 @@ public class GameController {
         GameMapModel mapModel = new GameMapModel(1366, 768);
         GameMapView mapView = new GameMapView(gContext, mapModel);
         SnakeModel snakeModel = new SnakeModel(1000, 1000, 30);
-        SnakeView snakeView = new SnakeView(snakeModel, Color.ALICEBLUE, gContext);
+        SnakeView snakeView = new SnakeView(snakeModel, SkinController.color, gContext);
 
         gameLoop = new GameLoop(snakeModel, snakeView, mapModel, mapView);
         
@@ -48,7 +48,7 @@ public class GameController {
             @Override
             public void handle(long arg0) {
                 gameLoop.setControlInfo(mouse.getX(), mouse.getY(), mouse.getIsBoost());
-                if (!GameLoop.running) endGame();
+                if (!GameLoop.running) endGame(snakeModel.getPoint());
             }
         };
         javafxLoop.start();
@@ -56,9 +56,17 @@ public class GameController {
         gameLoop.start();
     }
 
-    private void endGame() {
+    private void endGame(int score) {
         javafxLoop.stop();
-        System.out.println("Конец игры");
-        Platform.exit();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Menu.fxml"));
+            AnchorPane pane;
+            pane = fxmlLoader.load();
+            gameRoot.getChildren().setAll(pane);
+            MenuController controller = fxmlLoader.getController();
+            controller.setScore(score);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
