@@ -57,6 +57,30 @@ public class SnakeView {
         gContext.setLineWidth(size);
         gContext.stroke();
         gContext.restore();
+        gContext.save();
+
+        drawEye(paintX - size*0.375, paintY - size/4, size * 0.2);
+
+        drawEye(paintX + size*0.075, paintY - size/4, size * 0.2);
+
+        gContext.restore();
+
+//        gContext.save();
+    }
+
+    public void drawEye(double paintX, double paintY, double size){
+        gContext.beginPath();
+
+//        gContext.translate(paintX, paintY);
+//        gContext.rotate(snake.getAngle());
+        gContext.setFill(Color.WHITE);
+        gContext.fillOval(paintX , paintY , size*1.5 , size*1.5 );
+
+        gContext.beginPath();
+        gContext.setFill(Color.BLACK);
+        gContext.fillOval(paintX + size*0.2 , paintY + size* 0.15 , size , size );
+//        gContext.fillArc();
+//        gContext.restore();
     }
 
     public void setColor(Color color) {
