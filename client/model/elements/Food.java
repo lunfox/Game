@@ -13,7 +13,7 @@ public class Food extends Base {
     private Color color = Color.color(Math.random(), Math.random(), Math.random());
 
     public Food(double x, double y, double size, double point) {
-        super(x, y, size);
+        super(x, y, size, size);
         this.point = point;
         lightSize = size / 2;
     }
@@ -29,7 +29,6 @@ public class Food extends Base {
         }
     }
 
-    @Override
     public void render() {
         GraphicsContext gContext = GameMap.gContext;
         gContext.save();

@@ -1,5 +1,8 @@
 package client.model.gameloop;
 
+import java.util.ArrayList;
+import client.controller.elements.FoodController;
+import client.model.elements.Base;
 import client.model.elements.SnakeModel;
 import client.model.map.GameMapModel;
 import client.view.elements.SnakeView;
@@ -17,11 +20,14 @@ public class GameLoop implements Runnable {
     private GameMapModel mapModel;
     private GameMapView mapView;
 
-    public GameLoop(SnakeModel snakeModel, SnakeView snakeView, GameMapModel mapModel, GameMapView mapView) {
+    private ArrayList<FoodController> foods= new ArrayList<>();
+
+    public GameLoop(SnakeModel snakeModel, SnakeView snakeView, GameMapModel mapModel, GameMapView mapView, ArrayList<FoodController> foods) {
         this.snakeModel = snakeModel;
         this.snakeView = snakeView;
         this.mapModel = mapModel;
         this.mapView = mapView;
+        this.foods = foods;
     }
 
     public synchronized void start() {
@@ -71,11 +77,28 @@ public class GameLoop implements Runnable {
     private void update() {
         mapModel.update(snakeModel);
         snakeModel.update();
+        for (int i = 0; i < foods.size(); i++) {
+            FoodController food = foods.get(i);
+            food.getModel().update();
+            if (food.getModel().getVisible() && collision(snakeModel, food.getModel())) {
+                double added = snakeModel.eat(food.getModel());
+                foods.remove(i);
+                double newScale = GameMapModel.scale + added / (snakeModel.getWidth() * 4);
+                if (newScale < 1.4) {
+                    mapModel.setToScale(newScale);
+                }
+            }
+        }
+        if (mapModel.limit(snakeModel)) snakeModel.kill();
         if (!snakeModel.getIsAlive()) running = false;
     }
 
     private void render() {
         mapView.render();
+        for (int i = 0; i < foods.size(); i++) {
+            FoodController food = foods.get(i);
+            food.getView().render();
+        }
         snakeView.render();
     }
 
@@ -89,5 +112,16 @@ public class GameLoop implements Runnable {
         nx = (x + GameMapModel.view.getX()) * GameMapModel.scale;
         ny = (y + GameMapModel.view.getY()) * GameMapModel.scale;
         snakeModel.moveTo(nx, ny);
+    }
+
+    public boolean collision(Base obj1, Base obj2) {
+        double distanceX = Math.abs(obj1.getX() - obj2.getX());
+        double distanceY = Math.abs(obj1.getY() - obj2.getY());
+        double distanceWidth = Math.abs(obj1.getWidth() - obj2.getWidth());
+        double distanceHeight = Math.abs(obj1.getHeight() - obj2.getHeight());
+        if (distanceX > distanceWidth || distanceY > distanceHeight) {
+            return false;
+        }
+        return true;
     }
 }

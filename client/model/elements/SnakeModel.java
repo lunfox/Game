@@ -1,11 +1,9 @@
 package client.model.elements;
 
 import java.util.ArrayList;
-
-import client.model.map.GameMapModel;
 import client.model.view.ViewTracker;
 
-public class SnakeModel extends BaseModel implements ViewTracker {
+public class SnakeModel extends Base implements ViewTracker {
 
     private double BASE_ANGLE = Math.PI * 200;
     private double SPEED = 4;
@@ -24,7 +22,7 @@ public class SnakeModel extends BaseModel implements ViewTracker {
     private ArrayList<Movement> body = new ArrayList<>();
 
     public SnakeModel(double x, double y, double size) {
-        super(x, y, size);
+        super(x, y, size, size);
         updateSize(0);
         velocity();
     }
@@ -62,7 +60,7 @@ public class SnakeModel extends BaseModel implements ViewTracker {
         if (Math.abs(angleDistance) <= turnSpeed) {
             toAngle = angle = BASE_ANGLE + toAngle % (Math.PI * 2);
         } else {
-            angle += Integer.signum((int)angleDistance) * turnSpeed;
+            angle += Math.signum(angleDistance) * turnSpeed;
         }
     }
 
@@ -78,7 +76,7 @@ public class SnakeModel extends BaseModel implements ViewTracker {
         this.velocity();
         this.x += this.vx;
         this.y += this.vy;
-        if (GameMapModel.limit(x, y)) isAlive = false;
+        //if (GameMapModel.limit(x, y)) isAlive = false;
     }
 
     public void moveTo(double nx, double ny) {
@@ -117,14 +115,6 @@ public class SnakeModel extends BaseModel implements ViewTracker {
         return width;
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
     public void speedUp() {
         if (isSpeedUp) {
             return;
@@ -132,14 +122,6 @@ public class SnakeModel extends BaseModel implements ViewTracker {
         isSpeedUp = true;
         oldSpeed = speed;
         speed *= 2;
-    }
-
-    public double getPaintX() {
-        return paintX;
-    }
-
-    public double getPaintY() {
-        return paintY;
     }
 
     public void speedDown() {
@@ -150,7 +132,7 @@ public class SnakeModel extends BaseModel implements ViewTracker {
         speed = oldSpeed;
     }
 
-    public double eat(Food food) {
+    public double eat(FoodModel food) {
         point += food.getPoint();
         double added = food.getPoint() / 200;
         updateSize(added);
@@ -163,5 +145,9 @@ public class SnakeModel extends BaseModel implements ViewTracker {
 
     public int getPoint() {
         return point;
+    }
+
+    public void kill() {
+        isAlive = false;
     }
 }

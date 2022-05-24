@@ -7,8 +7,8 @@ public class GameMapModel {
     
     public static double scale;
     public static View view;
-    private static double width = 10000;
-    private static double height = 10000;
+    private double width = 2000;
+    private double height = 2000;
     private double paintWidth;
     private double paintHeight;
     private double toScale = 1;
@@ -27,16 +27,20 @@ public class GameMapModel {
         return value / scale;
     }
 
-    private void setScale(double scale) {
+    public void setScale(double scale) {
         if (GameMapModel.scale == scale) {
             return;
         }
         GameMapModel.scale = scale < 1 ? 1 : scale;
-        this.paintSizeReset();
+        paintSizeReset();
+    }
+
+    public void setToScale(double toScale) {
+        this.toScale = toScale;
     }
 
     public void update(ViewTracker obj) {
-        if (toScale  > 0 && scale != toScale) {     
+        if (toScale > 0 && scale != toScale) {     
             setScale(toScale);
         }
         view.trace(obj);
@@ -50,10 +54,19 @@ public class GameMapModel {
         return paintHeight;
     }
 
-    public static boolean limit(double x, double y) {
+    public boolean limit(ViewTracker obj) {
+        double x = obj.getX();
+        double y = obj.getY();
         if (x < 0 || x > width || y < 0 || y > height) {
             return true;
         } else return false;
     }
 
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
 }

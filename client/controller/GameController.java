@@ -1,10 +1,12 @@
 package client.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import client.model.elements.SnakeModel;
 import client.model.gameloop.GameLoop;
 import client.model.map.GameMapModel;
+import client.view.elements.FoodView;
 import client.view.elements.SnakeView;
 import client.view.map.GameMapView;
 import javafx.animation.AnimationTimer;
@@ -13,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
+import client.controller.elements.FoodController;
+import client.model.elements.FoodModel;
 
 public class GameController {
 
@@ -41,7 +45,20 @@ public class GameController {
         SnakeModel snakeModel = new SnakeModel(1000, 1000, 30);
         SnakeView snakeView = new SnakeView(snakeModel, SkinController.color, gContext);
 
-        gameLoop = new GameLoop(snakeModel, snakeView, mapModel, mapView);
+        ArrayList<FoodModel> foodModels = new ArrayList<>();
+        ArrayList<FoodView> foodViews = new ArrayList<>();
+        ArrayList<FoodController> foods = new ArrayList<>();
+
+        for (int i = 0; i < 50; i++) {
+            double point = Math.floor(Math.random() * 30 + 50);
+            double size = Math.floor(point / 3);
+            double x = Math.floor(Math.random() * (mapModel.getWidth() - 2 * size) + size);
+            double y = Math.floor(Math.random() * (mapModel.getHeight() - 2 * size) + size);
+            FoodModel food = new FoodModel(x, y, size, point);
+            foods.add(new FoodController(food, new FoodView(food, gContext)));
+        }
+
+        gameLoop = new GameLoop(snakeModel, snakeView, mapModel, mapView, foods);
         
         mouse = new MouseController(canvas);
         javafxLoop = new AnimationTimer() {
