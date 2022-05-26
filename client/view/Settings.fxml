@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #161c22;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.SettingsController">
+   <children>
+      <Button id="BackButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onBack" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
+      <Button fx:id="Resulation_1920x1080" layoutX="535.0" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#on_1920x1080" text="1920x1080" />
+      <Button fx:id="Resulation_1366x768" layoutX="535.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#on_1366x768" text="1366x768" />
+   </children>
+</AnchorPane>

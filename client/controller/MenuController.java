@@ -49,5 +49,10 @@ public class MenuController {
         AnchorPane pane = fxmlLoader.load();
         mainRoot.getChildren().setAll(pane);
     }
+    @FXML
+    public void onSettings() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Settings.fxml"));
+        AnchorPane pane = fxmlLoader.load();
+        mainRoot.getChildren().setAll(pane);
+    }
 }
-

@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class App extends Application {
-    
+    public static Stage stateStage;
     public static void main(String[] args) {
         launch();
     }
@@ -18,7 +18,8 @@ public class App extends Application {
         Scene scene = new Scene(pane);
         stage.setTitle("snake.io");
         stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
+        stage.setFullScreen(false);
+        stateStage = stage;
+        stateStage.show();
     }
 }

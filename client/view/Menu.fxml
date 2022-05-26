@@ -33,10 +33,10 @@
             </Text>
          </children>
       </TextFlow>
-      <Button id="SkinButton" layoutX="20.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#onSkin" prefHeight="128.0" prefWidth="128.0" stylesheets="@css/Button.css" text="Button" />
-      <Button id="SettingsButton" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
-      <Button id="ExitButton" layoutX="1265.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onExit" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
-      <Button id="ScoreButton" fx:id="ScoreButton" layoutX="1276.0" layoutY="684.0" mnemonicParsing="false" onAction="#onScore" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" />
+      <Button id="SkinButton" layoutX="20.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#onSkin" prefHeight="128.0" prefWidth="128.0" stylesheets="@css/Button.css" text="Button" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="20.0" />
+      <Button id="SettingsButton" fx:id="Settings" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#onSettings" onMouseClicked="#onSettings" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0" />
+      <Button id="ExitButton" layoutX="1265.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onExit" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="14.0" />
+      <Button id="ScoreButton" fx:id="ScoreButton" layoutX="1233.0" layoutY="602.0" mnemonicParsing="false" onAction="#onScore" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/Button.css" text="Button" AnchorPane.bottomAnchor="102.0" AnchorPane.rightAnchor="69.0" />
       <Text fx:id="textScore" fill="WHITE" layoutX="568.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your final lenght was  " visible="false">
          <font>
             <Font name="Calibri" size="24.0" />
