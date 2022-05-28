@@ -2,7 +2,6 @@ package client.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import client.model.elements.SnakeModel;
 import client.model.gameloop.GameLoop;
 import client.model.map.GameMapModel;
@@ -16,6 +15,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
 import client.controller.elements.FoodController;
+import client.model.DAO.PlayerDAO;
 import client.model.elements.FoodModel;
 
 public class GameController {
@@ -45,8 +45,6 @@ public class GameController {
         SnakeModel snakeModel = new SnakeModel(1000, 1000, 30);
         SnakeView snakeView = new SnakeView(snakeModel, SkinController.color, gContext);
 
-        ArrayList<FoodModel> foodModels = new ArrayList<>();
-        ArrayList<FoodView> foodViews = new ArrayList<>();
         ArrayList<FoodController> foods = new ArrayList<>();
 
         for (int i = 0; i < 50; i++) {
@@ -59,15 +57,20 @@ public class GameController {
         }
 
         gameLoop = new GameLoop(snakeModel, snakeView, mapModel, mapView, foods);
-        
+
         mouse = new MouseController(canvas);
+
         javafxLoop = new AnimationTimer() {
             @Override
             public void handle(long arg0) {
                 gameLoop.setControlInfo(mouse.getX(), mouse.getY(), mouse.getIsBoost());
-                if (!GameLoop.running) endGame(snakeModel.getPoint());
+                if (!GameLoop.running) {
+                    int score = snakeModel.getPoint();
+                    endGame(score);
+                }
             }
         };
+        
         javafxLoop.start();
 
         gameLoop.start();
@@ -76,6 +79,7 @@ public class GameController {
     private void endGame(int score) {
         javafxLoop.stop();
         try {
+            PlayerDAO.insert(score, MenuController.nString);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Menu.fxml"));
             AnchorPane pane;
             pane = fxmlLoader.load();
