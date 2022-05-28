@@ -18,7 +18,7 @@ public class App extends Application {
         Scene scene = new Scene(pane);
         stage.setTitle("snake.io");
         stage.setScene(scene);
-        stage.setFullScreen(false);
+        stage.setFullScreen(true);
         stateStage = stage;
         stateStage.show();
     }

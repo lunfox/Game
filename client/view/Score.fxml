@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #161c22;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.ScoreController">
    <children>
-      <TableView fx:id="table" layoutX="128.0" layoutY="82.0" prefHeight="632.0" prefWidth="1176.0" stylesheets="@css/Table.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+      <TableView fx:id="table" fixedCellSize="0.0" layoutX="277.0" layoutY="136.0" prefHeight="460.0" prefWidth="932.0" stylesheets="@css/Table.css" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="157.0" AnchorPane.topAnchor="136.0">
         <columns>
           <TableColumn fx:id="cNickname" editable="false" prefWidth="542.0" sortable="false" text="Игрок" />
           <TableColumn fx:id="cScore" editable="false" prefWidth="522.0" sortable="false" text="Счёт" />
