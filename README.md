@@ -1,4 +1,7 @@
 # Slither.io Javafx edition
+![Меню](https://github.com/lunfox/Game/blob/main/preview/menu.jpg)
+![Игра](https://github.com/lunfox/Game/blob/main/preview/game.jpg)
+![Рейтинг](https://github.com/lunfox/Game/blob/main/preview/rating.jpg)
 ### Текущее состояние:
 - Меню :heavy_check_mark:
 - Камера :heavy_check_mark:
